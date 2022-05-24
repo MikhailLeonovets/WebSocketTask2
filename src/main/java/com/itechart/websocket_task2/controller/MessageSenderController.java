@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class MessageSenderController {
 	private final MessageThreadSender messageThreadSender;
+	private final String sendTo = "/message/answer";
 
 	@Autowired
 	public MessageSenderController(MessageThreadSender messageThreadSender) {
@@ -17,10 +18,10 @@ public class MessageSenderController {
 	}
 
 	@MessageMapping("/welcome")
-	@SendTo("/message/answer")
+	//@SendTo(sendTo)
 	public void getMessages() {
 		for (int i = 0; i < 10; i++) {
-			messageThreadSender.sendMessageInThread(new Message("Thread: " + i));
+			messageThreadSender.sendMessageInThread(sendTo, new Message("Thread: " + i));
 		}
 	}
 }

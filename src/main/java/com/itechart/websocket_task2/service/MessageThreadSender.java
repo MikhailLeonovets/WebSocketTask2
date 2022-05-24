@@ -4,6 +4,6 @@ import com.itechart.websocket_task2.model.Message;
 
 public interface MessageThreadSender {
 
-	void sendMessageInThread(Message message);
+	void sendMessageInThread(String destination, Message message);
 
 }

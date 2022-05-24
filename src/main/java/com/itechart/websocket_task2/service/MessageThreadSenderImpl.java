@@ -1,7 +1,6 @@
 package com.itechart.websocket_task2.service;
 
 import com.itechart.websocket_task2.model.Message;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -20,7 +19,7 @@ public class MessageThreadSenderImpl implements MessageThreadSender {
 	}
 
 	@Override
-	public void sendMessageInThread(Message message) {
+	public void sendMessageInThread(String destination, Message message) {
 		new Thread(() -> {
 			int minTime = 1000;
 			int maxTime = 15000;
@@ -30,7 +29,7 @@ public class MessageThreadSenderImpl implements MessageThreadSender {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			simpMessagingTemplate.convertAndSend(message);
+			simpMessagingTemplate.convertAndSend(destination , message);
 		}).start();
 	}
 }
