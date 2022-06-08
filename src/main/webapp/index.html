@@ -39,9 +39,9 @@
         }
 
         function sendMessage() {
-            var from = document.getElementById('from').value;
-            var text = document.getElementById('text').value;
-            stompClient.send("/app/welcome", {}, JSON.stringify({'from':from, 'text':text}));
+            //var from = document.getElementById('from').value;
+            //var text = document.getElementById('text').value;
+            stompClient.send("/app/welcome", {}, /*JSON.stringify({'from':from, 'text':text})*/);
         }
 
         function showMessageOutput(messageOutput) {
@@ -69,7 +69,7 @@
     </div>
     <br />
     <div id="conversationDiv">
-        <input type="text" id="text" placeholder="Write a message..."/>
+<!--        <input type="text" id="text" placeholder="Write a message..."/>-->
         <button id="sendMessage" onclick="sendMessage();">Send</button>
         <p id="response"></p>
     </div>

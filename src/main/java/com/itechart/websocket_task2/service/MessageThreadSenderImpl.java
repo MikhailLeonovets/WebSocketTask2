@@ -21,6 +21,7 @@ public class MessageThreadSenderImpl implements MessageThreadSender {
 	@Override
 	public void sendMessageInThread(String destination, Message message) {
 		new Thread(() -> {
+			//simpMessagingTemplate.convertAndSend(destination , message);
 			int minTime = 1000;
 			int maxTime = 15000;
 			Random random = new Random();
